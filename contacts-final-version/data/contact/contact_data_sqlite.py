@@ -110,12 +110,16 @@ class ContactData:
         cursor = conn.cursor()
 
         # Aggiorniamo un contatto
-        cursor.execute("""
-            UPDATE Contact SET name = ?, surname = ?, phone = ?, email = ?, address = ?, city = ?, country = ?, zipcode = ?
-            WHERE contact_id = ?""",
-                       (contact.name, contact.surname, contact.phone, contact.email,
-                        contact.address, contact.city, contact.country, contact.zipcode, contact.contact_id)
-                       )
+        try:
+            cursor.execute("""
+                UPDATE Contact SET name = ?, surname = ?, phone = ?, email = ?, address = ?, city = ?, country = ?, zipcode = ?
+                WHERE contact_id = ?""",
+                           (contact.name, contact.surname, contact.phone, contact.email,
+                            contact.address, contact.city, contact.country, contact.zipcode, contact.contact_id)
+                           )
+        except sqlite3.IntegrityError as error:
+            print("Errore nell'aggiornamento del contatto:")
+            print(error)
 
         conn.commit()
         conn.close()
