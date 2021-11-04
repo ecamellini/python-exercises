@@ -1,0 +1,6 @@
+[MASTER]
+
+# Whitelisting sqlite3 C extension
+extension-pkg-allow-list=_sqlite3
+
+
