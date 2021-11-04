@@ -3,9 +3,10 @@ Boot dell'applicazione. Il file da eseguire per avviarla.
 """
 
 from data.contact.contact_data_csv import ContactData
-
-
 contact_data = ContactData(csv_path='contacts.csv')
+
+# from data.contact.contact_data_sqlite import ContactData
+# contact_data = ContactData(db_path='contacts.db')
 
 
 def create_contact():
