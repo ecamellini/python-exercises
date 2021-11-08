@@ -83,6 +83,18 @@ def list_contacts():
         print('Nessun contatto trovato.')
 
 
+def search_contacts():
+    print('Cerca tra i contatti:')
+    search = input('Inserisci chiave di ricerca: ')
+    search_terms = search.split(' ')
+    contacts = contact_data.list_contacts()
+    for contact in contacts:
+        to_search = contact.name + contact.surname + contact.phone + contact.email
+        for search_term in search_terms:
+            if search_term.lower() in to_search.lower():
+                contact.pretty_print()
+
+
 if __name__ == '__main__':
     # Funzione che riceve comandi dall'utente e li esegue.
 
@@ -94,6 +106,7 @@ if __name__ == '__main__':
     print('update: aggiorna un contatto.')
     print('delete: cancella un contatto.')
     print('list: lista i contatti.')
+    print('search: cerca tra i contatti.')
     print('exit: esci dal programma.')
 
     while True:
@@ -111,5 +124,7 @@ if __name__ == '__main__':
             delete_contact()
         elif operation == 'list':
             list_contacts()
+        elif operation == 'search':
+            search_contacts()
         else:
             print('Operazione non riconosciuta')
