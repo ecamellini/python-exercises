@@ -10,6 +10,9 @@ import os
 from data.contact.contact import Contact
 
 
+HEADER = ["contact_id", "name", "surname", "phone", "email"]
+
+
 class ContactData:
     """
     Modulo dati per la il CSV file contenente i contatti.
@@ -24,8 +27,7 @@ class ContactData:
         """
         Apre il CSV file.
         """
-        file = open(self.csv_path, mode, encoding="utf-8")
-        return file
+        return open(self.csv_path, mode, encoding="utf-8")
 
     def __create_csv(self):
         """
@@ -34,115 +36,86 @@ class ContactData:
         if os.path.isfile(self.csv_path):
             return
 
-        file = self.__open_csv("w+")
-        try:
-            writer = csv.writer(file)
-            writer.writerow([
-                "contact_id",
-                "name",
-                "surname",
-                "phone",
-                "email",
-                "address",
-                "city",
-                "country",
-                "zipcode"
-            ])
-        finally:
-            file.close()
+        with self.__open_csv("w+") as file_create_and_write:
+            writer = csv.writer(file_create_and_write)
+            writer.writerow(HEADER)
 
-    def create_contact(self, name, surname, phone, email, address, city, country, zipcode):
+    def __write_contact_row(self, csv_writer, contact):
+        csv_writer.writerow([
+            contact.contact_id,
+            contact.name,
+            contact.surname,
+            contact.phone,
+            contact.email
+        ])
+
+    def create_contact(self, name, surname, phone, email):
         """
         Crea un nuovo contatto nel nostro CSV.
         """
 
         contacts = self.list_contacts()
         contact_id = 1
-        if len(contacts) > 0:
-            contact_id = max([int(contact.contact_id)
-                             for contact in contacts]) + 1
-
-        file = self.__open_csv("a")
-        try:
-            writer = csv.writer(file)
-            writer.writerow([
-                contact_id,
-                name,
-                surname,
-                phone,
-                email,
-                address,
-                city,
-                country,
-                zipcode
+        if contacts and len(contacts) > 0:
+            contact_id = 1 + max([
+                int(contact.contact_id) for contact in contacts
             ])
-        finally:
-            file.close()
+
+        with self.__open_csv("a") as file_append:
+            writer = csv.writer(file_append)
+            self.__write_contact_row(
+                writer,
+                Contact(contact_id, name, surname, phone, email)
+            )
 
     def read_contact(self, contact_id):
         """
         Restituisce un contatto dal nostro CSV.
         """
-        file = self.__open_csv("r")
-        try:
-            reader = csv.reader(file)
-            next(reader)  # Salta la prima riga del CSV
+        with self.__open_csv("r") as file_read:
+            reader = csv.reader(file_read)
             for row in reader:
                 if row[0] == str(contact_id):
                     return Contact(*row)
-            else:
-                return None
 
-        finally:
-            file.close()
+            return None
 
     def list_contacts(self):
         """
         Restituisce tutti i contatti dal nostro CSV.
         """
-        file = self.__open_csv("r")
-        try:
-            reader = csv.reader(file)
-            next(reader)  # Salta la prima riga del CSV
+        with self.__open_csv("r") as file_read:
+            reader = csv.reader(file_read)
+            try:
+                next(reader)  # Salta la prima riga del CSV
+            except StopIteration:
+                return None
             return [Contact(*row) for row in reader]
-        finally:
-            file.close()
 
-    def update_contact(self, contact):
+    def update_contact(self, updated_contact):
         """
         Aggiorna un contatto nel nostro CSV.
         """
-        contact = self.read_contact(contact.contact_id)
-        if contact:
-            self.delete_contact(contact)
-            file = self.__open_csv("w")
-            try:
-                writer = csv.writer(file)
-                writer.writerow([
-                    contact.contact_id,
-                    contact.name,
-                    contact.surname,
-                    contact.phone,
-                    contact.email,
-                    contact.address,
-                    contact.city,
-                    contact.country,
-                    contact.zipcode
-                ])
-            finally:
-                file.close()
+        contacts = self.list_contacts()
+        if contacts:
+            with self.__open_csv("w") as file_write:
+                writer = csv.writer(file_write)
+                writer.writerow(HEADER)
+                for contact in contacts:
+                    if contact.contact_id == updated_contact.contact_id:
+                        self.__write_contact_row(writer, updated_contact)
+                    else:
+                        self.__write_contact_row(writer, contact)
 
     def delete_contact(self, contact_id):
         """
         Cancella un contatto dal nostro CSV.
         """
-        file = self.__open_csv("rw")
-        try:
-            reader = csv.reader(file)
-            next(reader)  # Salta la prima riga del CSV
-            for row in reader:
-                if row[0] != str(contact_id):
-                    writer = csv.writer(file)
-                    writer.writerow(row)
-        finally:
-            file.close()
+        contacts = self.list_contacts()
+        if contacts:
+            with self.__open_csv("w") as file_write:
+                writer = csv.writer(file_write)
+                writer.writerow(HEADER)
+                for contact in contacts:
+                    if contact.contact_id != contact_id:
+                        self.__write_contact_row(writer, contact)

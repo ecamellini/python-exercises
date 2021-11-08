@@ -8,16 +8,12 @@ class Contact:
     Contact model class.
     """
 
-    def __init__(self, contact_id, name, surname, phone, email, address, city, country, zipcode):
+    def __init__(self, contact_id, name, surname, phone, email):
         self.contact_id = contact_id
         self.name = name
         self.surname = surname
         self.phone = phone
         self.email = email
-        self.address = address
-        self.city = city
-        self.country = country
-        self.zipcode = zipcode
 
     def pretty_print(self):
         """
@@ -29,7 +25,3 @@ class Contact:
         print(f"\tSurname: {self.surname}")
         print(f"\tPhone: {self.phone}")
         print(f"\tEmail: {self.email}")
-        print(f"\tAddress: {self.address}")
-        print(f"\tCity: {self.city}")
-        print(f"\tCountry: {self.country}")
-        print(f"\tZipcode: {self.zipcode}\n")

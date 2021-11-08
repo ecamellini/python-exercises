@@ -33,11 +33,7 @@ class ContactData:
             name text,
             surname text,
             phone text unique,
-            email text unique,
-            address text,
-            city text,
-            country text,
-            zipcode text
+            email text unique
         )""")
         except sqlite3.OperationalError:
             pass
@@ -45,7 +41,7 @@ class ContactData:
         conn.commit()
         conn.close()
 
-    def create_contact(self, name, surname, phone, email, address, city, country, zipcode):
+    def create_contact(self, name, surname, phone, email):
         """
         Crea un nuovo contatto nel nostro database.
         """
@@ -55,11 +51,14 @@ class ContactData:
         # Creiamo un nuovo contatto
         try:
             cursor.execute("""
-            INSERT INTO Contact(contact_id, name, surname, phone, email, address, city, country, zipcode)
-            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-                           (None, name, surname, phone, email,
-                            address, city, country, zipcode)
-                           )
+            INSERT INTO Contact(contact_id, name, surname, phone, email)
+            VALUES(?, ?, ?, ?, ?)""", (
+                None,
+                name,
+                surname,
+                phone,
+                email
+            ))
         except sqlite3.IntegrityError as error:
             print("Errore nella creazione del contatto:")
             print(error)
@@ -100,7 +99,7 @@ class ContactData:
         if result:
             return [Contact(*row) for row in result]
         else:
-            print("Nessun contatto trovato.")
+            return None
 
     def update_contact(self, contact):
         """
@@ -112,11 +111,14 @@ class ContactData:
         # Aggiorniamo un contatto
         try:
             cursor.execute("""
-                UPDATE Contact SET name = ?, surname = ?, phone = ?, email = ?, address = ?, city = ?, country = ?, zipcode = ?
-                WHERE contact_id = ?""",
-                           (contact.name, contact.surname, contact.phone, contact.email,
-                            contact.address, contact.city, contact.country, contact.zipcode, contact.contact_id)
-                           )
+            UPDATE Contact SET name = ?, surname = ?, phone = ?, email = ?
+            WHERE contact_id = ?""", (
+                contact.name,
+                contact.surname,
+                contact.phone,
+                contact.email,
+                contact.contact_id
+            ))
         except sqlite3.IntegrityError as error:
             print("Errore nell'aggiornamento del contatto:")
             print(error)
