@@ -10,7 +10,7 @@ import os
 from data.contact.contact import Contact
 
 
-class ContactData:
+class ContactDataJson:
     """
     Modulo dati per la il JSON file contenente i contatti.
     """

@@ -9,7 +9,7 @@ import sqlite3
 from data.contact.contact import Contact
 
 
-class ContactData:
+class ContactDataSqlite:
     """
     Modulo dati per la tabella Contact del nostro database.
     """

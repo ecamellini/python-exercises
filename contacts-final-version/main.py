@@ -2,14 +2,14 @@
 Boot dell'applicazione. Il file da eseguire per avviarla.
 """
 
-from data.contact.contact_data_json import ContactData
-contact_data = ContactData(json_path='contacts.json')
+from data.contact.contact_data_json import ContactDataJson
+contact_data = ContactDataJson(json_path='contacts.json')
 
-# from data.contact.contact_data_csv import ContactData
-# contact_data = ContactData(csv_path='contacts.csv')
+# from data.contact.contact_data_csv import ContactDataCsv
+# contact_data = ContactDataCsv(csv_path='contacts.csv')
 
-# from data.contact.contact_data_sqlite import ContactData
-# contact_data = ContactData(db_path='contacts.db')
+# from data.contact.contact_data_sqlite import ContactDataSqlite
+# contact_data = ContactDataSqlite(db_path='contacts.db')
 
 
 def create_contact():

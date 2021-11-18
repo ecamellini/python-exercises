@@ -13,7 +13,7 @@ from data.contact.contact import Contact
 HEADER = ["contact_id", "name", "surname", "phone", "email"]
 
 
-class ContactData:
+class ContactDataCsv:
     """
     Modulo dati per la il CSV file contenente i contatti.
     """
