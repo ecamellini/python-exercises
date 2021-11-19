@@ -23,3 +23,13 @@ print(f"Tra 10 anni {name} ne avrà:")
 print(age + 10)
 print(f"{name} è nato nel:")
 print(2021 - age)
+
+# Possiamo anche richiamare più variabili nella stessa stringa,
+# o altre espressioni più complesse, sempre tra parentesi graffe
+n = 5
+
+print(f"L'età di {name} è {age}")
+print(f"Tra {n} anni {name} ne avrà: {age + n}")
+print(f"Tra {n * 2} anni {name} ne avrà: {age + (n * 2)}")
+print(f"{name} è nato nel:")
+print(2021 - age)

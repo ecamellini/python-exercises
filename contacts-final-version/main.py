@@ -2,14 +2,29 @@
 Boot dell'applicazione. Il file da eseguire per avviarla.
 """
 
-from data.contact.contact_data_json import ContactDataJson
-contact_data = ContactDataJson(json_path='contacts.json')
+import sys
 
-# from data.contact.contact_data_csv import ContactDataCsv
-# contact_data = ContactDataCsv(csv_path='contacts.csv')
+contact_data = None
 
-# from data.contact.contact_data_sqlite import ContactDataSqlite
-# contact_data = ContactDataSqlite(db_path='contacts.db')
+if len(sys.argv) == 1:
+    print('Esempio di utilizzo:')
+    print('python contacts.py json')
+    print('python contacts.py csv')
+    print('python contacts.py sqlite')
+    sys.exit(1)
+
+if sys.argv[1] == 'json':
+    from data.contact.contact_data_json import ContactDataJson
+    contact_data = ContactDataJson(json_path='contacts.json')
+elif sys.argv[1] == 'csv':
+    from data.contact.contact_data_csv import ContactDataCsv
+    contact_data = ContactDataCsv(csv_path='contacts.csv')
+elif sys.argv[1] == 'sqlite':
+    from data.contact.contact_data_sqlite import ContactDataSqlite
+    contact_data = ContactDataSqlite(db_path='contacts.db')
+else:
+    print('Formato dati non supportato.')
+    sys.exit(2)
 
 
 def create_contact():

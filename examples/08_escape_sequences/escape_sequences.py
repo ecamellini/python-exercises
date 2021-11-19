@@ -17,4 +17,9 @@ print("Prima riga.\nSeconda riga.")
 print("Prima dello spazio.\tDopo lo spazio.")
 
 # r-String, raw String - ignora i caratteri speciali e li stampa come sono
+# Utili ad esempio per rappresentare dei Path, con molti backslahes
 print(r"Prima riga.\nSeconda riga.")
+percorso_del_mio_file = r"C:\Documenti\nome_file"
+print(percorso_del_mio_file)  # se non fosse raw, \n andrebbe a capo
+percorso_del_mio_file = "C:\Documenti\nome_file"
+print(percorso_del_mio_file)  # lo vedamo qua

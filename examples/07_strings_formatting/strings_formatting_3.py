@@ -10,4 +10,6 @@ print(f'{1.0/3:.3f}')
 # circonda la stringa di tratti bassi (_) fino ad arrivare a una lunghezza di 11
 # Stampa: '___hello___' invece di 'hello'
 print('{0:_^11}'.format('hello'))
-print(f'{"hello":_^11}')
+
+euro = 3.2456785  # vogliamo solo due cifre decimali, è una valuta!
+print(f'Euro: {euro:.2f}')
