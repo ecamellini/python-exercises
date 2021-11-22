@@ -12,4 +12,8 @@ A = input("Inserisci la prima stringa: ")
 B = input("Inserisci la seconda stringa: ")
 C = input("Inserisci la terza stringa: ")
 
+# Soluzione A
 print(A + ", " + B + ", " + C + ".")
+
+# Soluzione B
+print(f'{A},{B},{C}.')

@@ -17,3 +17,11 @@ s *= n  # senza usare la scorciatoia *= posso direttamente stampare 3 volte la s
 print(s)
 print(s)
 print(s)
+
+# Altre soluzioni
+print(f"""{s}
+{s}
+{s}""")
+
+
+print(f"{s}\n{s}\n{s}")
