@@ -7,4 +7,5 @@ while True:
     if s == 'esci':
         break
     print('La lunghezza della stringa inserita è', len(s))
+
 print('Fine!')

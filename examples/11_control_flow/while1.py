@@ -17,7 +17,5 @@ while continua:
         print('No, un po\' più alto!')
     else:
         print('No, un po\' più basso!')
-else:
-    print('The while loop is over.')
 
 print('Fine!')
