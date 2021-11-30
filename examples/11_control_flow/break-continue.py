@@ -1,5 +1,5 @@
 """
-Esempio di break in un ciclo while.
+Esempio di break e continue in un ciclo while.
 """
 
 contatore = 0
@@ -12,6 +12,11 @@ while True:
         contatore = contatore + 1
     elif op == '-':
         contatore = contatore - 1
+    elif op == '=':
+        continue
+    else:
+        print("Operazione non riconosciuta.")
+        continue  # non fa niente e salta al giro successivo
 
 # break mi porta qua!
 print('Fine!')
