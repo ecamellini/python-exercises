@@ -52,7 +52,7 @@ while True:
     y = float(terms[2])
 
     result = calculate(x, y, operator)
-    if result:
+    if result != None:
         print(result)
     else:
         print('Operazione non riconosciuta.')
