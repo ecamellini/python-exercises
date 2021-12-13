@@ -15,19 +15,22 @@ for frutto in frutti:
     print(frutto)
 print()
 
+
 print(f"Lunghezza della lista: {len(frutti)}")
 print()
 
 # aggiungiamo un frutto
 frutti.append('meloni')
-print()
-
-print(f"Ho aggiunto alla lista: {frutti[3]}")
 print(frutti)
+print(f"Ho aggiunto alla lista: {frutti[3]}")
 print()
 
 print(f"Elementi ordinati: ")
 frutti.sort()
+print(frutti)
+print()
+
+frutti.insert(1, 'mango')
 print(frutti)
 print()
 
@@ -43,4 +46,9 @@ print()
 
 frutti.clear()
 print("Ho cancellato tutto.")
+print(frutti)
+
+frutti.append('albicocche')
+frutti.append('albicocche')
+
 print(frutti)

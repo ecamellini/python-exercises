@@ -1,4 +1,5 @@
 frutti = set(['pere', 'mele', 'banane', 'banane'])
+
 print(frutti)  # stampa {'mele', 'pere', 'banane'}
 print()
 
