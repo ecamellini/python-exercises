@@ -1,29 +1,46 @@
-frutti = ['pere', 'mele', 'banane', 'meloni', 'a', 'b', 'c', 'd', 'e']
+frutti = ['pere', 'mele', 'banane']
 
 print("Stampo il tipo della variabile che contiene la mia lista:")
 print(type(frutti))  # Stampa 'list'
+print()
 
 print("Stampo gli elementi della lista uno ad uno:")
 print(frutti[0])  # Stampa 'pere'
 print(frutti[1])  # Stampa 'mele'
 print(frutti[2])  # Stampa 'banane'
+print()
 
 print("Stampo gli elementi della lista con un for:")
 for frutto in frutti:
     print(frutto)
+print()
 
 print(f"Lunghezza della lista: {len(frutti)}")
+print()
 
 # aggiungiamo un frutto
 frutti.append('meloni')
+print()
 
 print(f"Ho aggiunto alla lista: {frutti[3]}")
 print(frutti)
+print()
 
 print(f"Elementi ordinati: ")
 frutti.sort()
 print(frutti)
+print()
+
+frutti.remove('pere')
+print("Ho cancellato 'pere'.")
+print(frutti)
+print()
 
 del frutti[0]
 print("Ho cancellato il primo elemento.")
+print(frutti)
+print()
+
+frutti.clear()
+print("Ho cancellato tutto.")
 print(frutti)
