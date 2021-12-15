@@ -1,0 +1,30 @@
+{
+  "prima": [
+    {
+      "nome": "Paolo",
+      "cognome": "Rossi"
+    },
+    {
+      "nome": "Paolo",
+      "cognome": "Bianchi"
+    },
+    {
+      "nome": "Pippo",
+      "cognome": "Verdi"
+    }
+  ],
+  "seconda": [
+    {
+      "Nome": "Giuseppe",
+      "Cognome": "Rossi"
+    },
+    {
+      "Nome": "John",
+      "Cognome": "Doe"
+    },
+    {
+      "Nome": "Jack",
+      "Cognome": "White"
+    }
+  ]
+}
