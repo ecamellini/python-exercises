@@ -1,3 +1,3 @@
 # Python excercises
 
-Used as part of: https://ecamel.me/corso-python (course in Italian)
+Part of the following course: https://ecamel.me/corso-python (in Italian)
