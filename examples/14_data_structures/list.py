@@ -1,9 +1,5 @@
 frutti = ['pere', 'mele', 'banane']
 
-print("Stampo il tipo della variabile che contiene la mia lista:")
-print(type(frutti))  # Stampa 'list'
-print()
-
 print("Stampo gli elementi della lista uno ad uno:")
 print(frutti[0])  # Stampa 'pere'
 print(frutti[1])  # Stampa 'mele'
@@ -47,8 +43,9 @@ print()
 frutti.clear()
 print("Ho cancellato tutto.")
 print(frutti)
+print()
 
+print("Aggiungo due volte albicocche - la lista ammette duplicati:")
 frutti.append('albicocche')
 frutti.append('albicocche')
-
 print(frutti)

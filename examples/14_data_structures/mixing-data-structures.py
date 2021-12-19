@@ -17,6 +17,21 @@ list_of_contacts = [
     }
 ]
 
+
+def search_by_name_list(name):
+    # Per cercare in una lista sulla base del conenuto degli elementi
+    # devo scorrere tutta la lista e controllarli uno per unoa
+    for contact in list_of_contacts:
+        if contact['name'] == name:
+            return contact
+    return None
+
+
+print(search_by_name_list("Eric"))  # stampa i dettagli di Eric
+print(search_by_name_list("Pippo"))  # stampa i dettagli di Pippo
+print(search_by_name_list("Pluto"))  # stampa None
+
+
 dictionary_of_contacts = {
     "Eric": {
         "email": "eric@example.com",
@@ -27,6 +42,18 @@ dictionary_of_contacts = {
         "phone": "213123123"
     }
 }
+
+
+def search_by_name_dict(name):
+    # Qua mi basta usare la chiave del dizionario, non devo scorrere tutti gli elementi
+    if name in dictionary_of_contacts:
+        return dictionary_of_contacts[name]
+    return None
+
+
+print(search_by_name_dict("Eric"))  # stampa i dettagli di Eric
+print(search_by_name_dict("Pippo"))  # stampa i dettagli di Pippo
+print(search_by_name_dict("Pluto"))  # stampa None
 
 # Liste di liste sono solitamente usate per rappresentare delle matrici!
 # Ad esempio, in questa matrice ogni riga può rappresentare un utente
