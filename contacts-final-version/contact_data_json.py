@@ -7,7 +7,7 @@ Implements CRUD operations for the contacts.
 import json
 import os
 
-from data.contact.contact import Contact
+from contact import Contact
 
 
 class ContactDataJson:

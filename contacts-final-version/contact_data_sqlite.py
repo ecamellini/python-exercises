@@ -6,7 +6,7 @@ Implements CRUD operations for the contact table.
 
 import sqlite3
 
-from data.contact.contact import Contact
+from contact import Contact
 
 
 class ContactDataSqlite:
@@ -26,7 +26,7 @@ class ContactDataSqlite:
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
 
-        # Creiamo la tabella per gli studenti, se non esiste già
+        # Creiamo la tabella Contact, se non esiste già
         try:
             cursor.execute("""CREATE TABLE Contact(
             contact_id integer primary key,

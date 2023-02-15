@@ -7,7 +7,7 @@ Implements CRUD operations for the contact table.
 import csv
 import os
 
-from data.contact.contact import Contact
+from contact import Contact
 
 
 HEADER = ["contact_id", "name", "surname", "phone", "email"]
