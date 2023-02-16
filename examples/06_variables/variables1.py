@@ -17,7 +17,7 @@ age = 35
 print("Anni di Pippo:")
 print(age)
 print("Tra 3 anni Pippo ne avrà:")
-print(age + 5)
+print(age + 3)
 print("Tra 10 anni Pippo ne avrà:")
 print(age + 10)
 print("Pippo è nato nel:")
