@@ -31,3 +31,5 @@ else:
                 print("Pari")
             else:
                 print("Dispari")
+        # eccetera...
+        # E se volessimo N numeri?
